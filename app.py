@@ -6,6 +6,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 import convert_cookie_for_youtube
+import upload_file_to_github
 
 app = FastAPI()
 
@@ -64,6 +65,7 @@ async def save_cookies(request: Request):
             save_cookies_to_file(save_data)
             convert_cookie_for_youtube.main(save_data)
             print(f"Stored data: {save_data}")
+            upload_file_to_github.main()
             return JSONResponse(content={"message": "Cookies received and stored"}, status_code=200)
         else:
             return JSONResponse(content={"message": "Invalid data structure"}, status_code=400)

@@ -96,7 +96,7 @@ def main(cookie_entry_data):
     output_lines = convert_raw_cookie_string_to_netscape_fixed_domain(raw_str, source)
 
     # Save to file (this would happen on your API server)
-    with open("cookies.txt", "w", encoding="utf-8") as f:
+    with open(cookies_file_path, "w", encoding="utf-8") as f:
         f.write("\n".join(output_lines))
 
     print("✅ Saved as cookies.txt in Netscape format with inferred domains.")
